@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://Anuj:3162@cluster0.j10qxpw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/admin')
+mongoose.connect('mongodb+srv://Anuj:3162@cluster0.j10qxpw.mongodb.net/admin')
 .then(()=>{
     console.log('connected to mongoDB')
 })
@@ -8,4 +8,4 @@ mongoose.connect('mongodb+srv://Anuj:3162@cluster0.j10qxpw.mongodb.net/?retryWri
     console.error(err)
 })
 
-module.exports = mongoose;
+module.exports = mongoose.connection;

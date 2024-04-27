@@ -1,32 +1,41 @@
 const express = require('express');
 const router = express.Router();
-const AdminModel = require('../models/Adminmodel');
+const AdminModel = require('../models/AdminModel'); // Adjusted import statement
 
-// Your routes definitions here...
+// POST route to create a new admin entry
+router.post('/admin/post', async (req, res) => {
+    try {
+        // Extract data from the request body
+        const bodyData = req.body;
 
-// Route to create a new admin record
-router.post('/admin', (req, res) => {
-    // Implementation here...
+        // Create a new Admin document using the AdminModel
+        const newAdmin = new AdminModel(bodyData);
+
+        // Save the newAdmin instance to the database
+        const savedAdmin = await newAdmin.save();
+
+        // Respond with the saved data
+        res.status(201).json(savedAdmin);
+    } catch (error) {
+        // If an error occurs, respond with an error message
+        console.error('Error creating admin entry:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
 
-// Route to get all admin records
-router.get('/admin', (req, res) => {
-    // Implementation here...
-});
-
-// Route to get a single admin record by ID
-router.get('/admin/:id', (req, res) => {
-    // Implementation here...
-});
-
-// Route to update an admin record
-router.put('/admin/:id', (req, res) => {
-    // Implementation here...
-});
-
-// Route to delete an admin record
-router.delete('/admin/:id', (req, res) => {
-    // Implementation here...
+// GET route to retrieve all admin entries
+router.get('/admin', async (req, res) => {
+    try {
+    
+        const adminData = await AdminModel.find({});
+        
+        // Respond with the retrieved data
+        res.status(200).json(adminData);
+    } catch (error) {
+        // If an error occurs, respond with an error message
+        console.error('Error retrieving admin entries:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
 
 module.exports = router;

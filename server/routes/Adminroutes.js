@@ -3,7 +3,7 @@ const router = express.Router();
 const AdminModel = require('../models/AdminModel');
 
 // POST route to create a new question using AdminModel
-router.post('/admin/question', async (req, res) => {
+router.post('/admin/addQues', async (req, res) => {
     try {
         const questionData = req.body;
         const newQuestion = new AdminModel(questionData);

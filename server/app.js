@@ -1,13 +1,15 @@
-const express = require('express')
+const express = require('express');
 const app = express();
-const PORT = 5000 ;
-const routes = require('./routes/Adminroutes')
+const adminRoutes = require('./routes/Adminroutes');
 
+// Application-level middleware
+app.use(express.json());
 
-// Mount the routes at a specific path
-app.use('/api', routes); 
+// Mount the admin routes
+app.use('/api', adminRoutes);
 
-//Server started
-app.listen(PORT,()=>{
-    console.log(`Server started at port ${PORT}`);
-})
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});

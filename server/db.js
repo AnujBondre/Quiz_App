@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
-
-mongoose.connect('mongodb+srv://Anuj:3162@cluster0.j10qxpw.mongodb.net/admin')
-.then(()=>{
-    console.log('connected to mongoDB')
-})
-.catch((err)=>{
+mongoose.connect('mongodb+srv://Jayantpatil:Jayant8806@quiz-app.vy1anz1.mongodb.net/Quiz-app').then(()=>{
+    console.log("DataBase Connected Sucessful")
+}).catch((err)=>{
     console.error(err)
 })
-
-module.exports = mongoose.connection;

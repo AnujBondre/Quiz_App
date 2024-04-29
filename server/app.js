@@ -1,9 +1,11 @@
 const express = require('express');
+const cors = require('cors'); // Import cors middleware
 const app = express();
 const adminRoutes = require('./routes/Adminroutes');
 
 // Application-level middleware
 app.use(express.json());
+app.use(cors());
 
 // Mount the admin routes
 app.use('/api', adminRoutes);

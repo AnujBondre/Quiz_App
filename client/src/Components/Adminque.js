@@ -11,7 +11,7 @@ function Adminque() {
     const fetchQuestions = async () => {
         try {
             // Fetch questions from the backend
-            const response = await axios.get('http://localhost:5000/api/admin');
+            const response = await axios.get('http://localhost:5000/api/');
             // Set the questions in the state
             setQuestions(response.data);
         } catch (error) {
